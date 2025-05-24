@@ -115,8 +115,38 @@ public class ManagerMenu {
                     System.out.println("상태변경 기능은 아직 구현되지 않았습니다.");
                     break;
                 case "5":
-                    System.out.println("역할변경 기능은 아직 구현되지 않았습니다.");
+                    RollSVC rollSVC = new RollSVC();
+                    System.out.println("역할 변경 메뉴\n");
+                    System.out.print("변경할 아이디 입력 >> ");
+                    String targetId = scanner.nextLine();
+
+                    // SUPER 관리자만 역할 변경 가능하도록 권한 체크
+                    if (!user.getRole().equalsIgnoreCase("SUPER")) {
+                        System.out.println("권한이 없습니다. SUPER 관리자만 역할 변경이 가능합니다.");
+                        break;
+                    }
+
+                    System.out.print("변경할 역할 입력 (1.SUPER  2.SUB) >> ");
+                    String roleInput = scanner.nextLine();
+                    String newRole = null;
+
+                    if (roleInput.equals("1")) {
+                        newRole = "SUPER";
+                    } else if (roleInput.equals("2")) {
+                        newRole = "SUB";
+                    } else {
+                        System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
+                        break;
+                    }
+
+                    int changeResult = rollSVC.updateRole(targetId, newRole);
+                    if (changeResult > 0) {
+                        System.out.println("상태변경됨");
+                    } else {
+                        System.out.println("변경 실패");
+                    }
                     break;
+
                 case "6":
                     System.out.println("로그아웃되었습니다.\n");
                     return;  // 메인 메뉴로 복귀

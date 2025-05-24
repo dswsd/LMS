@@ -3,15 +3,18 @@ package LMS;
 import java.sql.*;
 import java.time.LocalDate;
 public class AdminSVC {
-    Connection con;
+    static Connection con;
 
-    public void connect(){
+    public static void connect(){
         try {
             String url = "jdbc:mysql://localhost:3306/lms";
             con = DriverManager.getConnection(url, "root", "1111");
         } catch (SQLException se){
             se.printStackTrace();
         }
+    }
+
+    public static void close(PreparedStatement pstmt, Connection conn) {
     }
 
     //1. 학생 등록

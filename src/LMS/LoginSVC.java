@@ -3,7 +3,7 @@ package LMS;
 import java.sql.*;
 
 public class LoginSVC {
-    Connection con;
+    static Connection con;
 
     static {
         try {
@@ -13,7 +13,7 @@ public class LoginSVC {
         }
     }
 
-    public void connect() {
+    public static void connect() {
         try {
             String url = "jdbc:mysql://localhost:3306/lms";
             con = DriverManager.getConnection(url, "root", "1111");
@@ -21,6 +21,9 @@ public class LoginSVC {
         } catch (SQLException se) {
             se.printStackTrace();
         }
+    }
+
+    public static void close(PreparedStatement pstmt, Connection conn) {
     }
 
     //로그인
