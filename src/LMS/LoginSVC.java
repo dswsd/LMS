@@ -17,7 +17,6 @@ public class LoginSVC {
         try {
             String url = "jdbc:mysql://localhost:3306/lms";
             con = DriverManager.getConnection(url, "root", "1111");
-            System.out.println("Connection Success!");
         } catch (SQLException se) {
             se.printStackTrace();
         }
