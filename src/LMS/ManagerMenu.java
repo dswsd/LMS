@@ -116,7 +116,7 @@ public class ManagerMenu {
                     break;
                 case "5":
                     RollSVC rollSVC = new RollSVC();
-                    System.out.println("역할 변경 메뉴\n");
+                    System.out.println("역할 변경 메뉴");
                     System.out.print("변경할 아이디 입력 >> ");
                     String targetId = scanner.nextLine();
 
